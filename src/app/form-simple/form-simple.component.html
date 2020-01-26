@@ -5,6 +5,11 @@
                 <p>Formulario Simple (Usando FormControl)</p>
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" [formControl]="name" id="nombre">
+                <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors.required">
+                        Este campo es requerido
+                    </div>
+                </div>
             </div>
             <button (click)="send()" [disabled]="!name.valid" type="submit" class="btn btn-primary">Submit</button>
         </div>
@@ -14,8 +19,21 @@
                     <p>Formulario Multiple (Usando FormGroup)</p>
                     <label for="user">Username</label>
                     <input class="form-control" type="text" formControlName="username" id="user">
+                    <div class="alert alert-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div *ngIf="username.errors.required">
+                            Ingrese el usuario
+                        </div>
+                    </div>
                     <label for="pass">Password</label>
                     <input  class="form-control" type="password" formControlName="pass" id="pass">
+                    <div class="alert alert-danger" *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+                        <div *ngIf="pass.errors.required">
+                            Ingrese su contraseña
+                        </div>
+                        <div *ngIf="pass.errors.minlength">
+                            La contraseña debe tener un mínimo de 4 caractéres.
+                        </div>
+                    </div>
                 </div>
                 <button (click)=sendGroup() [disabled]="!login.valid" type="submit" class="btn btn-primary">Enviar</button>
             </form>
@@ -27,8 +45,30 @@
                 <p>Formulario Multiple (Usando FormBuilder)</p>
                 <label for="user">Nombre</label>
                 <input class="form-control" type="text" formControlName="nombre" id="user">
+                <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <div *ngIf="nombre.errors.required">
+                        Debe ingresar su nombre.
+                    </div>
+                    <div *ngIf="nombre.errors.minlength">
+                        Tu nombre es muy corto.
+                    </div>
+                </div>
+                <div class="alert alert-success" *ngIf="nombre.valid && (nombre.dirty || nombre.touched)">
+                    It's fine..
+                </div>
                 <label for="pass">Apellido</label>
                 <input  class="form-control" type="text" formControlName="apellido" id="pass">
+                <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                    <div *ngIf="apellido.errors.required">
+                        Debe ingresar su apellido.
+                    </div>
+                    <div *ngIf="apellido.errors.maxlength">
+                        Tu apellido es muy largo..
+                    </div>
+                </div>
+                <div class="alert alert-success" *ngIf="apellido.valid && (apellido.dirty || apellido.touched)">
+                    Success..
+                </div>
             </div>
             <button (click)="sendGroupBuilder()" [disabled]="!informacion.valid" type="submit" class="btn btn-danger">Enviar</button>
         </form>
