@@ -1,0 +1,6 @@
+.container{
+    width: 90vw;
+    position: absolute;
+    border: 1px solid teal;
+    border-radius: 4px;
+}

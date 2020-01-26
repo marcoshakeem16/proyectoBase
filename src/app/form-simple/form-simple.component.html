@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <p>Formulario Simple (Usando FormControl)</p>
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" [formControl]="name" id="nombre">
+            </div>
+            <button (click)="send()" [disabled]="!name.valid" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col">
+            <form [formGroup]="login">
+                <div class="form-group">
+                    <p>Formulario Multiple (Usando FormGroup)</p>
+                    <label for="user">Username</label>
+                    <input class="form-control" type="text" formControlName="username" id="user">
+                    <label for="pass">Password</label>
+                    <input  class="form-control" type="password" formControlName="pass" id="pass">
+                </div>
+                <button (click)=sendGroup() [disabled]="!login.valid" type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <form [formGroup]="informacion">
+            <div class="form-group">
+                <p>Formulario Multiple (Usando FormBuilder)</p>
+                <label for="user">Nombre</label>
+                <input class="form-control" type="text" formControlName="nombre" id="user">
+                <label for="pass">Apellido</label>
+                <input  class="form-control" type="text" formControlName="apellido" id="pass">
+            </div>
+            <button (click)="sendGroupBuilder()" [disabled]="!informacion.valid" type="submit" class="btn btn-danger">Enviar</button>
+        </form>
+    </div>
+</div>
+
+
