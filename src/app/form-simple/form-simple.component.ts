@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { forbiddenNameValidator, forbiddenApellidoValidator } from "../custom-validators/forbiddenNameValidator";
 
 @Component({
   selector: 'app-form-simple',
@@ -19,8 +20,8 @@ export class FormSimpleComponent implements OnInit {
 
   /* Variable para el Formulario Multiple (FormBuilder) */
   informacion = this.fb.group({
-    nombre:['', [Validators.required, Validators.minLength(4)]],
-    apellido:['', [Validators.required, Validators.maxLength(5)]]
+    nombre:['', [Validators.required, Validators.minLength(4), forbiddenNameValidator(/relajado/i)]],
+    apellido:['', [Validators.required, Validators.maxLength(10), forbiddenApellidoValidator(/ayala/i)]]
   });
   constructor(private fb: FormBuilder) { }
 

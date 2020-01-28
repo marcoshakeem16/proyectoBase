@@ -52,6 +52,9 @@
                     <div *ngIf="nombre.errors.minlength">
                         Tu nombre es muy corto.
                     </div>
+                    <div *ngIf="nombre.errors.forbiddenName">
+                        No puedes puede ser {{nombre.value}}
+                    </div>
                 </div>
                 <div class="alert alert-success" *ngIf="nombre.valid && (nombre.dirty || nombre.touched)">
                     It's fine..
@@ -64,6 +67,9 @@
                     </div>
                     <div *ngIf="apellido.errors.maxlength">
                         Tu apellido es muy largo..
+                    </div>
+                    <div *ngIf="apellido.errors.apellidoProhibido">
+                        No puedes puede ser {{apellido.value}}
                     </div>
                 </div>
                 <div class="alert alert-success" *ngIf="apellido.valid && (apellido.dirty || apellido.touched)">
